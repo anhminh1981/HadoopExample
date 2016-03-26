@@ -16,6 +16,7 @@ public class MyMapper extends Mapper<Text, Text, Text, Text> {
 		Set<String> sentWords = new HashSet<String>() ;
 		for(String word: value.toString().split("\\W+")) {
 			if(!word.isEmpty() && ! sentWords.contains(word)) {
+				sentWords.add(word);
 				keyOut.set(word);
 				valueOut.set(key);
 				context.write(keyOut, valueOut);
